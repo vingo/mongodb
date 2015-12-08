@@ -3,6 +3,7 @@ then
   . ~/.bash_profile
 fi
 
+
 index=1
 len=0
 filepath=~/Desktop/mongodbStatus.log  #! 读取mongod 进程的状态文件
