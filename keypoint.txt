@@ -4,4 +4,14 @@ replication set notes
 1. sysnc only  isn't  from primary node..
 please refer http://www.ttlsa.com/mongodb/mongodb-replicaset-internal/
 
+2. dbref
+   for example:
+
+    key='ref';
+    db.school.insert({_id:key,id:1,name:'shang'});
+    db.students.insert(id:1,name:'a',school:new DBRef('school',key)); //add dbref
+    db.students.find({id:1})[0].school.fetch(); //get ref doc;
+
+
+
 
