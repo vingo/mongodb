@@ -1,0 +1,7 @@
+
+
+replication set notes
+1. sysnc only  isn't  from primary node..
+please refer http://www.ttlsa.com/mongodb/mongodb-replicaset-internal/
+
+
