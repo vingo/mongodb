@@ -12,6 +12,12 @@ please refer http://www.ttlsa.com/mongodb/mongodb-replicaset-internal/
     db.students.insert(id:1,name:'a',school:new DBRef('school',key)); //add dbref
     db.students.find({id:1})[0].school.fetch(); //get ref doc;
 
+3.  mongodb storage Engine Performance  compare
 
-
+   version: 2.X   MMAPV0 MMAPV1
+            * CLL(collection level locking)
+            * concurrency read 100%
+   version: 3.X   WiredTiger
+            * DLL(document level locking)
+            * concurrency read and write 100%
 
