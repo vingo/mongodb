@@ -1,0 +1,31 @@
+1. 创建mongodb配置文件mongod.conf
+    bind_ip=127.0.0.1  #ip 默认本机ip
+    port=27020   #端口,默认27017端口
+    dbpath=/mongodb/data/db
+    logpath=/mongodb/logs/log.log
+    logappend=true
+    smallfiles=true     #
+    fork=true   #后台启动
+    journal=true  #启用数据操作日志
+    replSet=replDB #复制集名
+    oplogSize=1000  #操作日志的大小
+
+---------------------------------------
+
+2.开启三个mongodb 服务
+ mongodb -f mongod1.conf    #port 27017
+ mongodb -f mongod2.conf    #port 27018
+ mongodb -f mongod3.conf    #port 27019
+--------------------------------------
+3.初始化
+   mongod --port 27017  #连接其中一个mongodb实例
+   conf={id:'replDB',members:[
+         {_id:0,host:'127.0.0.1:27017'},
+         {_id:0,host:'127.0.0.1:27018'},
+         {_id:0,host:'127.0.0.1:27019'}
+   ]};         # 复制集 名字 ：replDB 与配置文件的统一
+
+   rs.initiate(conf);  #初始化成员
+   rs.status();        #查看成员健康状态
+   rs.conf();          #查看成员配置
+
