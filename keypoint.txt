@@ -20,4 +20,9 @@ please refer http://www.ttlsa.com/mongodb/mongodb-replicaset-internal/
    version: 3.X   WiredTiger
             * DLL(document level locking)
             * concurrency read and write 100%
+4  副本集 脑裂
+    五个成员（1primary,4 secondary）,挂3个，剩余的2个成员是无法判断其他三个节点是发生宕机或者是网络原因，可以认为是发生了网络分区，即脑裂。官方方法是自我降级为从节点
+
+
+
 
